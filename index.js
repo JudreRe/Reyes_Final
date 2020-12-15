@@ -6,6 +6,7 @@ const multer = require("multer");
 const upload = multer();
 const { Pool } = require('pg');
 const { response } = require("express");
+const { type } = require("os");
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -34,3 +35,4 @@ app.get("/", (req, res) => {
       res.render("index");
     }
   });
+
