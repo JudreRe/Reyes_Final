@@ -21,3 +21,16 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
+
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
+
+
+  //Test to make sure the application works
+//Home
+app.get("/", (req, res) => {
+    {
+      res.render("index");
+    }
+  });
