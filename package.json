@@ -1,0 +1,30 @@
+{
+  "name": "Reyes_Final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JudreRe/Reyes_Final.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JudreRe/Reyes_Final/issues"
+  },
+  "homepage": "https://github.com/JudreRe/Reyes_Final#readme",
+
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "multer": "^1.4.2"
+  }
+}
