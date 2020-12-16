@@ -51,34 +51,47 @@ app.get("/sum", (req, res) => {
 });
 
 app.post("/sum", (req, res) => {
-  console.log(req.body);
+  
   let numbers = [];
   var num1= req.body.num1;
   var num2= req.body.num2;
   var incr= req.body.incr;
   var i= 0;
-  var errorMessage= "Ending number must be less than starting number"
+  var errorMessage= "Ending number must be less than starting number";
+  const model= req.body;
 
 
   for ( i = num1; i <= num2; i++) {
 
-      if(incr > 1) {
+      if(incr > 0) {
 
 
           numbers.push(+incr);
-          console.log(num1)
-          var sum = numbers.reduce(function(a,b){
-            return a + b;
-          })
-          console.log(sum);
-      } else if (num2 < num1) {
 
-        msg= errorMessage
+
+
+          var sum = numbers.reduce(function(a,b){
+
+            return a + b;
+          },0)
+
+         
+
+      } else if (num2 <= num1) {
+
+        errorMessage = errorMessage;
         
           
       } else {
 
         numbers.push (i++);
+        var sum = numbers.reduce(function(a,b){
+
+          return a + b;
+
+         
+        },0)
+        console.log(sum);
 
       }
       
@@ -94,7 +107,8 @@ app.post("/sum", (req, res) => {
     incr: incr,
     i: i,
     sum: sum,
-    msg: errorMessage
+    msg: errorMessage,
+    model: model
     
   })
 })
