@@ -31,8 +31,10 @@ app.listen(process.env.PORT || 3000, function () {
 
   //Test to make sure the application works
 //Home
-//home
-app.get("/home", async (req, res) => {
+
+
+
+app.get("/", async (req, res) => {
 {
   res.render("index");
 }
