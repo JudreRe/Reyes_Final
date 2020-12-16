@@ -40,13 +40,71 @@ app.get("/home", async (req, res) => {
 
 
 //Sum of series
-app.get("/sum")
+app.get("/sum", (req, res) => {
+
+  res.render("sum", {
+    type: "get",
+    num1: "",
+    num2: "",
+    incr: ""
+  })
+});
+
+app.post("/sum", (req, res) => {
+  console.log(req.body);
+  let numbers = [];
+  var num1= req.body.num1;
+  var num2= req.body.num2;
+  var incr= req.body.incr;
+  var i= 0;
+  var errorMessage= "Ending number must be less than starting number"
+
+
+  for ( i = num1; i <= num2; i++) {
+
+      if(incr > 1) {
+
+
+          numbers.push(+incr);
+          console.log(num1)
+          var sum = numbers.reduce(function(a,b){
+            return a + b;
+          })
+          console.log(sum);
+      } else if (num2 < num1) {
+
+        msg= errorMessage
+        
+          
+      } else {
+
+        numbers.push (i++);
+
+      }
+      
+      
+  }
+
+
+  res.render("sum", {
+    type: "post",
+    numbers: numbers,
+    num1: num1,
+    num2: num2,
+    incr: incr,
+    i: i,
+    sum: sum,
+    msg: errorMessage
+    
+  })
+})
+
 
 //import
 
 app.get("/import", async (req, res) => {
   const totRecs = await dblib.getTotalRecords();
-  const customers = {
+  const book = {
 
     book_id: "",
     title: "",
@@ -60,7 +118,7 @@ app.get("/import", async (req, res) => {
   res.render("import", {
     type: "get",
     totRecs: totRecs.totRecords,
-    customer: customers
+    book: book
   });
 });
 

@@ -1,17 +1,26 @@
 <table>
     <tr>
-        <td><label>ID</label></td>
-        <td><input readonly autofocus class="form-control" type="number" name="firstnum" id="firstnum" requried value="<%= model.cusid %>" /></td>
-        <label>(Required)</label>
+        <td><label>Enter </label></td>
+        <td><input autofocus class="form-control" type="number" name="num1" id="firstnum" required value="num1" /></td>
+        <td><label>(Required)</label></td>
     </tr>
     <tr>
         <td><label for="cusfname">Enter Ending Number</label></td>
-        <td><input autofocus class="form-control" type="number" name="secondnum" id="secondnum" required value="<%= model.cusfname %>" /></td>    
-        <label>(Required)</label>
+        <td><input autofocus class="form-control" type="number" name="num2" id="secondnum" required value="num2" /></td>    
+        <td><label>(Required)</label></td>
     </tr>
     <tr>
-        <td><label for="cusstate">State</label></td>
-        <td><input autofocus class="form-control" type="number" name="cusstate" id="cusstate" required value="<%= model.cusstate %>" /></td>    
-        <label>(Required)</label>
+        <td><label for="cusstate">Enter Increment</label></td>
+        <td><input autofocus class="form-control" type="number" name="incr" id="incr" required value="incr" /></td>    
+        <td><label>(Required)</label></td>
     </tr>
 </table>
+
+<input style ="align-content: center;"  type="submit" value="Calculate Sum" class="btn btn-default btn-info" />
+
+
+<% if (type === "post") { %>
+
+<p>The sum of the numbers from <%= num1 %> to <%= num2 %> incremented by <%= incr %> is <%= sum %></p>
+
+<% } %>

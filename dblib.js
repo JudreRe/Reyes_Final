@@ -11,7 +11,7 @@ const pool = new Pool({
 
 //total record
 const getTotalRecords = () => {
-    sql = "SELECT COUNT(*) FROM customer";
+    sql = "SELECT COUNT(*) FROM book";
     return pool.query(sql)
         .then(result => {
             return {
@@ -32,7 +32,7 @@ const getTotalRecords = () => {
 //Import
 const importBooks = (params) => {
 
-    const sql = "INSERT INTO book(book_id, title, total_pages, rating, isbn, published_date) VALUES ($1, $2, $3, $4, $5, $6)";
+    const sql = "INSERT INTO book(book_id, title, total_pages, rating, isbn, published_date) VALUES ($1, $2, $3, $4, $5, NULLIF($6,NULL::date))";
    
     return pool.query(sql, params)
 
