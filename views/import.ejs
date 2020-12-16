@@ -1,0 +1,35 @@
+<%- include("_header") -%>
+<h2>Import Books</h2>
+
+<div style="padding-top: 10px;">Total number of records in the database: <%= totRecs %> <br></div>
+<div style="padding-top: 10px;">Select a file with books for Database Insert</div> 
+<form action= "/import" style="padding-top: 10px;" enctype= "multipart/form-data" onsubmit= "return waiting()" method= "POST"> 
+    <input type="file" name="filename" required><p></p>
+    <input class="btn btn-info" type="submit" value="Import Customers" required>
+</form>
+
+<div id = "done"></div>
+<script>
+    function waiting() {
+        var done = document.getElementById("done");
+        done.insertAdjacentHTML('afterend', "<h2><b> Wait for result <b></h2>");
+
+    };
+</script>
+
+
+<% if (type === "POST") { %>
+
+    <h1>Import Summary </h1>
+    
+    <p><b>Records Processed: <%= numInserted + numFailed %></b></p>
+    
+    <p><b>Records Inserted Successfully: <%= numInserted %></b></p>
+    
+    <p><b>Records Not Inserted: <%= numFailed %> </b></p>
+    
+    <h3>Errors:</h3>
+
+    <pre><%= errorMessage %></pre>
+
+    <% } %>
